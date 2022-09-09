@@ -9,22 +9,28 @@ import { print } from './js/lib.js';
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
+class basePerson {
+   constructor(person, name, gender, legs, hands, voice) {
+      this.person = person;
+      this.name = name;
+      this.gender = gender;
+      this.legs = legs;
+      this.hands = hands;
+      this.voice = voice;
+   }
+};
 
-// ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
+const dog = new basePerson('dog', 'Buran', 'male', 4, 0, 'woof!');
+const cat = new basePerson('cat', 'Yana', 'female', 4, 0, 'meow!');
+const man = new basePerson('human', 'Viktor', 'male', 2, 2, 'Congratulations!');
+const woman = new basePerson('human', 'Olena', 'female', 2, 2, 'Slava Ukraine!');
+const catWoman = Object.create(cat);
+catWoman.person = 'Cat-Woman';
+catWoman.name = 'Selina Kyle';
+catWoman.gender = 'female';
+catWoman.legs = 2;
+catWoman.hands = 2;
 
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
+const fictionalWorld = [dog, cat, man, woman, catWoman];
+fictionalWorld.map(p => print(Object.values(p).map(val => val).join(' - ')));
 
-/* Print examples:
-   print('ABC');
-   print('<strong>ABC</strong>');
-   print('<strong>ABC</strong>', 'div');
-
-   print('human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
-   */
